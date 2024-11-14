@@ -79,4 +79,4 @@ def crop_face(image_path):
                             continue
                         face_image = aligned[rect_start_point[1]:rect_end_point[1],
                                             rect_start_point[0]:rect_end_point[0]]
-                mp_drawing.draw_detection(image, detection)
+                        return face_image
