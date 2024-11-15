@@ -6,7 +6,7 @@ import mediapipe as mp
 mp_face_detection = mp.solutions.face_detection
 
 
-class FaceAligner:
+ class FaceAligner:
     def __init__(self, model_selection=0, min_detection_confidence=0.5):
         """
         Initialize the FaceAligner with the specified model selection and confidence.
