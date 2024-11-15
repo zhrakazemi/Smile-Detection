@@ -6,7 +6,7 @@ import mediapipe as mp
 mp_face_detection = mp.solutions.face_detection
 
 
- class FaceAligner:
+class FaceAligner:
     def __init__(self, model_selection=0, min_detection_confidence=0.5):
         """
         Initialize the FaceAligner with the specified model selection and confidence.
@@ -40,12 +40,13 @@ mp_face_detection = mp.solutions.face_detection
         angle = math.atan2(delta_y, delta_x)
         return angle * (180.0 / math.pi)
 
-    def align_face(self, image_path: str) -> Union[None, Tuple[cv2.Mat, cv2.Mat]]:
+    def align_face(self, image_path: str="", image=None) -> Union[None, Tuple[cv2.Mat, cv2.Mat]]:
         """Align and crop face from the given image."""
-        image = cv2.imread(image_path)
         if image is None:
-            print("Error: Image not found.")
-            return None
+            image = cv2.imread(image_path)
+            if image is None:
+                print("Error: Image not found.")
+                return None
 
         image_rows, image_cols, _ = image.shape
         # Convert the image to RGB
